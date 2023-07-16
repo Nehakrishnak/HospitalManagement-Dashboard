@@ -1,0 +1,82 @@
+{% extends 'hospital/admin_base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background-color:rgba(0,0,0,0.025) ;
+      color: rgb(82, 80, 80);
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+      background-color: rgba(0,0,0,0.025);
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<br><br>
+<!------ add appointment page by admin(sumit)  ---------->
+<form method="post">
+  {% csrf_token %}
+  <div class="container register-form">
+    <div class="form">
+      <div class="note">
+        <p>Book Appointment Details</p>
+      </div>
+      <div class="form-content" style="background-color: rgba(0,0,0,0.011);">
+        <div class="row" style="background-color: rgba(0,0,0,0.00011);">
+          <div class="col-md-12" style="background-color: rgba(0,0,0,0.0011);">
+            <div class="form-group bg-transparent" style="background-color: rgba(0,0,0,0.011); ">
+              {% render_field appointmentForm.description class="form-control bg-transparent" placeholder="Description" %}
+            </div>
+            <div class="form-group">
+              {% render_field appointmentForm.doctorId class="form-control bg-transparent" placeholder="doctor" %}
+            </div>
+            <div class="form-group">
+              {% render_field appointmentForm.patientId class="form-control bg-transparent" placeholder="patient" %}
+            </div>
+
+          </div>
+
+        </div>
+        <button type="submit" class="btnSubmit" style="background-color: rgba(0,0,0,0);color:rgb(49, 49, 49)">Book</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+{% endblock content %}

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /*.card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+    }*/
+
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    button:hover,
+    a:hover {
+      opacity: 0.7;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      padding: 0px;
+      left: 100px;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    a {
+      color: white;
+    }
+
+    /*added this */
+    .card {
+      position: relative;
+      left: 150px;
+      top: 0px;
+      width: 250px;
+      height: 250px;
+      color: #a18a96;
+      text-align: center;
+      display: grid;
+      place-content: center;
+      padding: 10px;
+      background: url('{% static "images/admin.png" %}') center no-repeat;
+      background-size: cover;
+      border-radius: 20px;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .card::before,
+    .card::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: calc(60% + 35px);
+      background-color: #fff;
+      transition: transform .5s.25s ease-in;
+      z-index: -1;
+    }
+
+    .card::before {
+      top: 0;
+      clip-path:
+        polygon(0 0, 100% 0, 100% 45%, 0% 100%);
+      transform: translateY(-100%);
+    }
+
+    .card::after {
+      bottom: 0;
+      clip-path: polygon(0 55%, 100% 0, 100% 100%, 0% 100%);
+      transform: translateY(100%);
+    }
+
+    .card__content {
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .card__title {
+      color: #6A515E;
+      margin-bottom: 15PX;
+    }
+
+    .card__description {
+      font-size: 14px;
+    }
+
+    .card:hover::before,
+    .card:hover::after {
+      transform: translateY(0);
+    }
+
+    .card:hover .card__content {
+      opacity: 1;
+      transition-delay: .75s;
+    }
+    .cards {
+      position: relative;
+      left: 150px;
+      top: 0px;
+      width: 250px;
+      height: 250px;
+      color: #a18a96;
+      text-align: center;
+      display: grid;
+      place-content: center;
+      padding: 10px;
+      background: url('{% static "images/doctor.png" %}') center no-repeat;
+      background-size: cover;
+      border-radius: 20px;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .cards::before,
+    .cards::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: calc(60% + 35px);
+      background-color: #fff;
+      transition: transform .5s.25s ease-in;
+      z-index: -1;
+    }
+
+    .cards::before {
+      top: 0;
+      clip-path:
+        polygon(0 0, 100% 0, 100% 45%, 0% 100%);
+      transform: translateY(-100%);
+    }
+
+    .cards::after {
+      bottom: 0;
+      clip-path: polygon(0 55%, 100% 0, 100% 100%, 0% 100%);
+      transform: translateY(100%);
+    }
+
+    .cards__content {
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .cards__title {
+      color: #6A515E;
+      margin-bottom: 15PX;
+    }
+
+    .cards__description {
+      font-size: 14px;
+    }
+
+    .cards:hover::before,
+    .cards:hover::after {
+      transform: translateY(0);
+    }
+
+    .cards:hover .cards__content {
+      opacity: 1;
+      transition-delay: .75s;
+    }
+    .car {
+      position: relative;
+      left: 150px;
+      top: 0px;
+      width: 250px;
+      height: 250px;
+      color: #a18a96;
+      text-align: center;
+      display: grid;
+      place-content: center;
+      padding: 10px;
+      background: url('{% static "images/patient.jpg" %}') center no-repeat;
+      background-size: cover;
+      border-radius: 20px;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .car::before,
+    .car::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: calc(60% + 35px);
+      background-color: #fff;
+      transition: transform .5s.25s ease-in;
+      z-index: -1;
+    }
+
+    .car::before {
+      top: 0;
+      clip-path:
+        polygon(0 0, 100% 0, 100% 45%, 0% 100%);
+      transform: translateY(-100%);
+    }
+
+    .car::after {
+      bottom: 0;
+      clip-path: polygon(0 55%, 100% 0, 100% 100%, 0% 100%);
+      transform: translateY(100%);
+    }
+
+    .car__content {
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .car__title {
+      color: #6A515E;
+      margin-bottom: 15PX;
+    }
+
+    .car__description {
+      font-size: 14px;
+    }
+
+    .car:hover::before,
+    .car:hover::after {
+      transform: translateY(0);
+    }
+
+    .car:hover .car__content {
+      opacity: 1;
+      transition-delay: .75s;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="grid-container">
+    <!-- <div class="grid-item">
+      <div class="card">
+        <img src="{% static "images/admin.png" %}" alt="John" style="width:100%">
+        <p class="title">ADMIN</p>
+        <p><button><a href="/adminclick">View</a></button></p>
+      </div>
+
+    </div>
+
+    <div class="grid-item">
+      <div class="card">
+        <img src="{% static "images/doctor.png" %}" alt="John" style="width:100%">
+        <p class="title">DOCTOR</p>
+        <p><button><a href="/doctorclick">View</a></button></p>
+      </div>
+    </div>
+
+    <div class="grid-item">
+      <div class="card">
+        <img src="{% static "images/patient.jpg" %}" alt="John" style="width:100%">
+        <p class="title">PATIENT</p>
+        <p><button><a href="/patientclick">View</a></button></p>
+      </div>
+    </div>-->
+    <!--added this-->
+    <article class="card">
+      <div class="card__content">
+        <h3 class="card__title">ADMIN</h3>
+        <a href="/adminclick" class="card__description" style="color: rgb(32, 31, 31);">If you are an Admin 
+          click here
+        </a>
+      </div>
+    </article>
+    <!--added this-->
+    <article class="cards">
+      <div class="cards__content">
+        <h3 class="cards__title" >Doctor</h3>
+        <a href="/doctorclick" class="cards__description" style="color: rgb(32, 31, 31);">If you are an Doctor
+          click here
+        </a>
+      </div>
+    </article>
+    <!--added this-->
+    <article class="car">
+      <div class="car__content">
+        <h3 class="car__title">Patient</h3>
+        <a href="/patientclick" class="car__description" style="color: rgb(32, 31, 31);">If you are a Patient click here</a>
+      </div>
+    </article>
+
+  </div>
+
+
+
+</body>
+
+</html>
