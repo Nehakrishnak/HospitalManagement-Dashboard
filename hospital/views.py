@@ -12,7 +12,7 @@ from django.conf import settings
 def home_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
-    return HttpResponseRedirect('afterlogin')
+    return render(request,'hospital/index.html')
 
 
 #for showing signup/login button for admin
